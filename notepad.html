@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Notepad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+        .box {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>📝 Online Notepad</h2>
+    <textarea id="note" placeholder="Write your notes here..."></textarea>
+    <button onclick="saveNote()">💾 Save Note</button>
+    <button onclick="clearNote()">🗑️ Clear Note</button>
+</div>
+
+<script>
+    // Load saved note
+    document.getElementById("note").value = localStorage.getItem("note") || "";
+
+    function saveNote() {
+        let text = document.getElementById("note").value;
+        localStorage.setItem("note", text);
+        alert("Note saved!");
+    }
+
+    function clearNote() {
+        localStorage.removeItem("note");
+        document.getElementById("note").value = "";
+    }
+</script>
+
+</body>
+</html>
